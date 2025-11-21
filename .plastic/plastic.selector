@@ -1,0 +1,4 @@
+repository "Rock Paper Scissors/Rock Paper Scissors@18967744036668@cloud"
+  path "/"
+    br "/main"
+    co "/main"
