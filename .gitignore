@@ -1,0 +1,59 @@
+# Large Unity Directories - Exclude from Git
+Library/
+Temp/
+Logs/
+UserSettings/
+Build/
+Builds/
+MemoryCaptures/
+
+# Cache and temporary files
+*.log
+.DS_Store
+Thumbs.db
+
+# Visual Studio and VS Code
+.vs/
+.vscode/
+*.sln
+*.csproj
+*.csproj.user
+*.csproj.meta
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Unity Editor and Build files
+*.pidb
+*.pdb
+*.apk
+*.unitypackage
+*.bundle
+*.manifest
+
+# Ignore audio and video files if they're large
+# *.mp4
+# *.mp3
+# *.wav
+# *.mov
+
+# Ignore large asset files
+# Assets/rescource/images/*.png
+# Assets/rescource/images/*.jpg
+
+# Local environment files
+.env
+.env.local
+.env.*.local
