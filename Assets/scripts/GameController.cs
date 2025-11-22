@@ -1,22 +1,39 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("UI References")]
     public Image yourChoiceImage;
     public Image comChoiceImage;
-
-    public Sprite rockSprite;
-    public Sprite paperSprite;
-    public Sprite scissorsSprite;
-
     public TextMeshProUGUI yourScoreText;
     public TextMeshProUGUI comScoreText;
     public TextMeshProUGUI resultText;
 
+    [Header("Sprites")]
+    public Sprite rockSprite;
+    public Sprite paperSprite;
+    public Sprite scissorsSprite;
+
     private int yourScore = 0;
     private int comScore = 0;
+
+    // Static variables to pass data to GameOver scene
+    public static int finalPlayerScore;
+    public static int finalComputerScore;
+    public static string gameResult; // "WIN", "LOSE", or "DRAW"
+
+    void Start()
+    {
+        // Reset scores when starting new game
+        yourScore = 0;
+        comScore = 0;
+        yourScoreText.text = "0";
+        comScoreText.text = "0";
+        resultText.text = "Choose your move!";
+    }
 
     public void PlayerChoose(int you)
     {
@@ -46,8 +63,32 @@ public class GameManager : MonoBehaviour
         }
 
         // Update score text
-        yourScoreText.text = ""+yourScore;
-        comScoreText.text = ""+comScore;
+        yourScoreText.text = yourScore.ToString();
+        comScoreText.text = comScore.ToString();
+    }
+
+    public void EndGame()
+    {
+        // Determine final result
+        if (yourScore > comScore)
+        {
+            gameResult = "WIN";
+        }
+        else if (comScore > yourScore)
+        {
+            gameResult = "LOSE";
+        }
+        else
+        {
+            gameResult = "DRAW";
+        }
+
+        // Store final scores
+        finalPlayerScore = yourScore;
+        finalComputerScore = comScore;
+
+        // Load game over scene
+        SceneManager.LoadScene("GameOver");
     }
 
     // Return correct sprite
